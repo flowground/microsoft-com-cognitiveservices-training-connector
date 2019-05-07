@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "iterationId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "threshold": {
+            "required": false,
+            "type": "number",
+            "format": "float"
+        },
+        "overlapThreshold": {
+            "required": false,
+            "type": "number",
+            "format": "float"
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

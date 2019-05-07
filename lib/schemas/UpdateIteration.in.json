@@ -1,0 +1,104 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "iterationId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "description": "Iteration model to be sent over JSON.",
+            "properties": {
+                "classificationType": {
+                    "description": "Gets the classification type of the project.",
+                    "enum": [
+                        "Multiclass",
+                        "Multilabel"
+                    ],
+                    "readOnly": true,
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "Classifier"
+                    },
+                    "nullable": true
+                },
+                "created": {
+                    "description": "Gets the time this iteration was completed.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "domainId": {
+                    "description": "Get or sets a guid of the domain the iteration has been trained on.",
+                    "format": "uuid",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": true
+                },
+                "exportable": {
+                    "description": "Whether the iteration can be exported to another format for download.",
+                    "readOnly": true,
+                    "type": "boolean",
+                    "nullable": false
+                },
+                "id": {
+                    "description": "Gets the id of the iteration.",
+                    "format": "uuid",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "isDefault": {
+                    "description": "Gets or sets a value indicating whether the iteration is the default iteration for the project.",
+                    "type": "boolean",
+                    "nullable": false
+                },
+                "lastModified": {
+                    "description": "Gets the time this iteration was last modified.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "name": {
+                    "description": "Gets or sets the name of the iteration.",
+                    "type": "string",
+                    "nullable": true
+                },
+                "projectId": {
+                    "description": "Gets The project id. of the iteration.",
+                    "format": "uuid",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "status": {
+                    "description": "Gets the current iteration status.",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": true
+                },
+                "trainedAt": {
+                    "description": "Gets the time this iteration was last modified.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": true
+                }
+            },
+            "type": "object",
+            "nullable": true
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

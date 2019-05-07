@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "iterationId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "platform": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "CoreML",
+                "TensorFlow",
+                "DockerFile",
+                "ONNX"
+            ]
+        },
+        "flavor": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Linux",
+                "Windows",
+                "ONNX10",
+                "ONNX12"
+            ]
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

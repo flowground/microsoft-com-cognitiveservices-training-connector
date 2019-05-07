@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "description": {
+            "required": false,
+            "type": "string"
+        },
+        "domainId": {
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+        },
+        "classificationType": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Multiclass",
+                "Multilabel"
+            ]
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

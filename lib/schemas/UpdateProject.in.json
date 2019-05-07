@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "description": "Represents a project.",
+            "properties": {
+                "created": {
+                    "description": "Gets the date this project was created.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "description": {
+                    "description": "Gets or sets the description of the project.",
+                    "type": "string",
+                    "nullable": true
+                },
+                "id": {
+                    "description": "Gets The project id.",
+                    "format": "uuid",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "lastModified": {
+                    "description": "Gets the date this project was last modified.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "name": {
+                    "description": "Gets or sets the name of the project.",
+                    "type": "string",
+                    "nullable": true
+                },
+                "settings": {
+                    "description": "Gets or sets the project settings.",
+                    "properties": {
+                        "classificationType": {
+                            "description": "Gets or sets the classification type of the project.",
+                            "enum": [
+                                "Multiclass",
+                                "Multilabel"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "Classifier"
+                            },
+                            "nullable": true
+                        },
+                        "domainId": {
+                            "description": "Gets or sets the id of the Domain to use with this project.",
+                            "format": "uuid",
+                            "type": "string",
+                            "nullable": false
+                        }
+                    },
+                    "type": "object",
+                    "nullable": true
+                },
+                "thumbnailUri": {
+                    "description": "Gets the thumbnail url representing the project.",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": true
+                }
+            },
+            "type": "object",
+            "nullable": true
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

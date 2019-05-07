@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "description": "Batch of image tags.",
+            "properties": {
+                "tags": {
+                    "description": "Image Tag entries to include in this batch.",
+                    "items": {
+                        "description": "Entry associating a tag to an image.",
+                        "properties": {
+                            "imageId": {
+                                "description": "Id of the image.",
+                                "format": "uuid",
+                                "type": "string",
+                                "nullable": false
+                            },
+                            "tagId": {
+                                "description": "Id of the tag.",
+                                "format": "uuid",
+                                "type": "string",
+                                "nullable": false
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "type": "array",
+                    "nullable": true
+                }
+            },
+            "type": "object",
+            "nullable": true
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

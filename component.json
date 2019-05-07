@@ -1,0 +1,833 @@
+{
+    "title": "Custom Vision Training Client",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/microsoft.com/cognitiveservices-Training/2.2/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.2/Training",
+                    "{Endpoint}",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "GetDomains": {
+            "main": "./lib/actions/GetDomains.js",
+            "title": "Get a list of the available domains.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetDomains.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetDomain": {
+            "main": "./lib/actions/GetDomain.js",
+            "title": "Get information about a specific domain.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetDomain.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetProjects": {
+            "main": "./lib/actions/GetProjects.js",
+            "title": "Get your projects.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetProjects.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateProject": {
+            "main": "./lib/actions/CreateProject.js",
+            "title": "Create a project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteProject": {
+            "main": "./lib/actions/DeleteProject.js",
+            "title": "Delete a specific project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetProject": {
+            "main": "./lib/actions/GetProject.js",
+            "title": "Get a specific project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateProject": {
+            "main": "./lib/actions/UpdateProject.js",
+            "title": "Update a specific project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteImages": {
+            "main": "./lib/actions/DeleteImages.js",
+            "title": "Delete images from the set of training images.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteImages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateImagesFromData": {
+            "main": "./lib/actions/CreateImagesFromData.js",
+            "title": "Add the provided images to the set of training images.",
+            "description": "This API accepts body content as multipart/form-data and application/octet-stream. When using multipart\r\nmultiple image files can be sent at once, with a maximum of 64 files",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateImagesFromData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateImagesFromFiles": {
+            "main": "./lib/actions/CreateImagesFromFiles.js",
+            "title": "Add the provided batch of images to the set of training images.",
+            "description": "This API accepts a batch of files, and optionally tags, to create images. There is a limit of 64 images and 20 tags.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateImagesFromFiles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetImagesByIds": {
+            "main": "./lib/actions/GetImagesByIds.js",
+            "title": "Get images by id for a given project iteration.",
+            "description": "This API will return a set of Images for the specified tags and optionally iteration. If no iteration is specified the\r\ncurrent workspace is used.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetImagesByIds.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateImagesFromPredictions": {
+            "main": "./lib/actions/CreateImagesFromPredictions.js",
+            "title": "Add the specified predicted images to the set of training images.",
+            "description": "This API creates a batch of images from predicted images specified. There is a limit of 64 images and 20 tags.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateImagesFromPredictions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteImageRegions": {
+            "main": "./lib/actions/DeleteImageRegions.js",
+            "title": "Delete a set of image regions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteImageRegions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateImageRegions": {
+            "main": "./lib/actions/CreateImageRegions.js",
+            "title": "Create a set of image regions.",
+            "description": "This API accepts a batch of image regions, and optionally tags, to update existing images with region information.\r\nThere is a limit of 64 entries in the batch.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateImageRegions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTaggedImages": {
+            "main": "./lib/actions/GetTaggedImages.js",
+            "title": "Get tagged images for a given project iteration.",
+            "description": "This API supports batching and range selection. By default it will only return first 50 images matching images.\r\nUse the {take} and {skip} parameters to control how many images to return in a given batch.\r\nThe filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\r\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTaggedImages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTaggedImageCount": {
+            "main": "./lib/actions/GetTaggedImageCount.js",
+            "title": "Gets the number of images tagged with the provided {tagIds}.",
+            "description": "The filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\r\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTaggedImageCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteImageTags": {
+            "main": "./lib/actions/DeleteImageTags.js",
+            "title": "Remove a set of tags from a set of images.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteImageTags.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateImageTags": {
+            "main": "./lib/actions/CreateImageTags.js",
+            "title": "Associate a set of images with a set of tags.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateImageTags.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUntaggedImages": {
+            "main": "./lib/actions/GetUntaggedImages.js",
+            "title": "Get untagged images for a given project iteration.",
+            "description": "This API supports batching and range selection. By default it will only return first 50 images matching images.\r\nUse the {take} and {skip} parameters to control how many images to return in a given batch.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUntaggedImages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUntaggedImageCount": {
+            "main": "./lib/actions/GetUntaggedImageCount.js",
+            "title": "Gets the number of untagged images.",
+            "description": "This API returns the images which have no tags for a given project and optionally an iteration. If no iteration is specified the\r\ncurrent workspace is used.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUntaggedImageCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateImagesFromUrls": {
+            "main": "./lib/actions/CreateImagesFromUrls.js",
+            "title": "Add the provided images urls to the set of training images.",
+            "description": "This API accepts a batch of urls, and optionally tags, to create images. There is a limit of 64 images and 20 tags.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateImagesFromUrls.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetIterations": {
+            "main": "./lib/actions/GetIterations.js",
+            "title": "Get iterations for the project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetIterations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteIteration": {
+            "main": "./lib/actions/DeleteIteration.js",
+            "title": "Delete a specific iteration of a project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteIteration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetIteration": {
+            "main": "./lib/actions/GetIteration.js",
+            "title": "Get a specific iteration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetIteration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateIteration": {
+            "main": "./lib/actions/UpdateIteration.js",
+            "title": "Update a specific iteration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateIteration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetExports": {
+            "main": "./lib/actions/GetExports.js",
+            "title": "Get the list of exports for a specific iteration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetExports.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExportIteration": {
+            "main": "./lib/actions/ExportIteration.js",
+            "title": "Export a trained iteration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExportIteration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetIterationPerformance": {
+            "main": "./lib/actions/GetIterationPerformance.js",
+            "title": "Get detailed performance information about an iteration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetIterationPerformance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetImagePerformances": {
+            "main": "./lib/actions/GetImagePerformances.js",
+            "title": "Get image with its prediction for a given project iteration.",
+            "description": "This API supports batching and range selection. By default it will only return first 50 images matching images.\r\nUse the {take} and {skip} parameters to control how many images to return in a given batch.\r\nThe filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\r\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetImagePerformances.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetImagePerformanceCount": {
+            "main": "./lib/actions/GetImagePerformanceCount.js",
+            "title": "Gets the number of images tagged with the provided {tagIds} that have prediction results from\r\ntraining for the provided iteration {iterationId}.",
+            "description": "The filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\r\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetImagePerformanceCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeletePrediction": {
+            "main": "./lib/actions/DeletePrediction.js",
+            "title": "Delete a set of predicted images and their associated prediction results.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeletePrediction.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "QueryPredictions": {
+            "main": "./lib/actions/QueryPredictions.js",
+            "title": "Get images that were sent to your prediction endpoint.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/QueryPredictions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "QuickTestImage": {
+            "main": "./lib/actions/QuickTestImage.js",
+            "title": "Quick test an image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/QuickTestImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "QuickTestImageUrl": {
+            "main": "./lib/actions/QuickTestImageUrl.js",
+            "title": "Quick test an image url.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/QuickTestImageUrl.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTags": {
+            "main": "./lib/actions/GetTags.js",
+            "title": "Get the tags for a given project and iteration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTags.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateTag": {
+            "main": "./lib/actions/CreateTag.js",
+            "title": "Create a tag for the project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteTag": {
+            "main": "./lib/actions/DeleteTag.js",
+            "title": "Delete a tag from the project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTag": {
+            "main": "./lib/actions/GetTag.js",
+            "title": "Get information about a specific tag.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateTag": {
+            "main": "./lib/actions/UpdateTag.js",
+            "title": "Update a tag.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TrainProject": {
+            "main": "./lib/actions/TrainProject.js",
+            "title": "Queues project for training.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TrainProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetImageRegionProposals": {
+            "main": "./lib/actions/GetImageRegionProposals.js",
+            "title": "Get region proposals for an image. Returns empty array if no proposals are found.",
+            "description": "This API will get region proposals for an image along with confidences for the region. It returns an empty array if no proposals are found.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetImageRegionProposals.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

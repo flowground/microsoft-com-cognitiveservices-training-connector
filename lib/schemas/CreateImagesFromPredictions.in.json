@@ -1,0 +1,89 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "properties": {
+                "images": {
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "format": "uuid",
+                                "type": "string",
+                                "nullable": false
+                            },
+                            "regions": {
+                                "items": {
+                                    "properties": {
+                                        "height": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        },
+                                        "left": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        },
+                                        "tagId": {
+                                            "description": "Id of the tag associated with this region.",
+                                            "format": "uuid",
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "top": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        },
+                                        "width": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                },
+                                "type": "array",
+                                "nullable": true
+                            },
+                            "tagIds": {
+                                "items": {
+                                    "format": "uuid",
+                                    "type": "string",
+                                    "nullable": false
+                                },
+                                "type": "array",
+                                "nullable": true
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "type": "array",
+                    "nullable": true
+                },
+                "tagIds": {
+                    "items": {
+                        "format": "uuid",
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "type": "array",
+                    "nullable": true
+                }
+            },
+            "type": "object",
+            "nullable": true
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "tagId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "description": "Represents a Tag.",
+            "properties": {
+                "description": {
+                    "description": "Gets or sets the description of the tag.",
+                    "type": "string",
+                    "nullable": true
+                },
+                "id": {
+                    "description": "Gets the Tag ID.",
+                    "format": "uuid",
+                    "readOnly": true,
+                    "type": "string",
+                    "nullable": false
+                },
+                "imageCount": {
+                    "description": "Gets the number of images with this tag.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer",
+                    "nullable": false
+                },
+                "name": {
+                    "description": "Gets or sets the name of the tag.",
+                    "type": "string",
+                    "nullable": true
+                },
+                "type": {
+                    "description": "Gets or sets the type of the tag.",
+                    "enum": [
+                        "Regular",
+                        "Negative"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "TagType"
+                    },
+                    "nullable": false
+                }
+            },
+            "type": "object",
+            "nullable": true
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

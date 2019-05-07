@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "imageIds": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "string",
+                "nullable": false
+            }
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

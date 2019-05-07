@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "properties": {
+                "application": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "continuation": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "endTime": {
+                    "format": "date-time",
+                    "type": "string",
+                    "nullable": true
+                },
+                "iterationId": {
+                    "format": "uuid",
+                    "type": "string",
+                    "nullable": true
+                },
+                "maxCount": {
+                    "format": "int32",
+                    "type": "integer",
+                    "nullable": false
+                },
+                "orderBy": {
+                    "enum": [
+                        "Newest",
+                        "Oldest",
+                        "Suggested"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "OrderBy"
+                    },
+                    "nullable": false
+                },
+                "session": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "startTime": {
+                    "format": "date-time",
+                    "type": "string",
+                    "nullable": true
+                },
+                "tags": {
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "format": "uuid",
+                                "readOnly": true,
+                                "type": "string",
+                                "nullable": false
+                            },
+                            "maxThreshold": {
+                                "format": "float",
+                                "readOnly": true,
+                                "type": "number",
+                                "nullable": false
+                            },
+                            "minThreshold": {
+                                "format": "float",
+                                "readOnly": true,
+                                "type": "number",
+                                "nullable": false
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "type": "array",
+                    "nullable": true
+                }
+            },
+            "type": "object",
+            "nullable": true
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

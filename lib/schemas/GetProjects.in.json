@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

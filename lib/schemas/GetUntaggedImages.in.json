@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "iterationId": {
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+        },
+        "orderBy": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Newest",
+                "Oldest"
+            ]
+        },
+        "take": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 50
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

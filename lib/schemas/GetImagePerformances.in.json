@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "iterationId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "tagIds": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string",
+                "nullable": false
+            }
+        },
+        "orderBy": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Newest",
+                "Oldest"
+            ]
+        },
+        "take": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 50
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

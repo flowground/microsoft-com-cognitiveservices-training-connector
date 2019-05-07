@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "imageIds": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string",
+                "nullable": false
+            }
+        },
+        "iterationId": {
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+        },
+        "Training_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
